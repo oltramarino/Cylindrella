@@ -1,0 +1,69 @@
+1. Explain the Direct & Inverse kinematics of this robot.
+
+#######################
+A cylindrical robot is a type of industrial robot that has a cylindrical shape. It typically consists of a base, a vertical column, and an arm that can rotate around the column and move up and down. The Direct Kinematics and Inverse Kinematics are two methods used to control the movement of a cylindrical robot.
+
+Direct Kinematics:
+
+Direct Kinematics is the process of determining the position and orientation of the end effector (the tool or gripper at the end of the robot arm) based on the known joint angles of the robot. In other words, given the joint angles of the robot, we can calculate the position and orientation of the end effector using mathematical equations. This process is also known as forward kinematics.
+
+Inverse Kinematics:
+
+Inverse Kinematics is the process of determining the joint angles required to position the end effector at a specific location and orientation. In other words, given the desired position and orientation of the end effector, we can calculate the required joint angles of the robot arm using mathematical equations. This process is also known as reverse kinematics.
+
+In summary, Direct Kinematics determines the position and orientation of the end effector based on the joint angles, while Inverse Kinematics determines the joint angles required to position the end effector at a specific location and orientation. These two methods are essential for controlling the movement of a cylindrical robot in various industrial applications such as welding, material handling, and assembly.
+############################################################
+The direct kinematics of a cylindrical robot is the process of determining the position and orientation of the end effector (tool or gripper) based on the known joint angles of the robot. In simpler terms, it calculates the position and orientation of the end effector when specific joint angles is inputted.
+
+To understand the direct kinematics of a cylindrical robot, we need to consider its basic geometry. Our cylindrical robot consists of a base, a vertical column, and an arm that rotates around the column and moves up and down. The arm is connected to the column with one  joint, which is a revolute (rotational) joint.
+
+To calculate the position and orientation of the end effector, we use a coordinate system. The base of the robot is considered as the origin (0,0,0) of the coordinate system. The joint angles represent the rotations of the arm around the column and can be denoted as θ1.
+
+The transformation from one link to another in the robot arm can be represented using Denavit-Hartenberg parameters. These parameters describe the relationship between adjacent links by defining a set of reference frames and coordinate systems. Each frame relates to a joint and has its own set of parameters such as link length, twist angle, and offset distance.
+
+By applying the Denavit-Hartenberg parameters and using trigonometry, we can determine the homogeneous transformation matrix that represents the position and orientation of each link relative to the base frame. By multiplying these matrices successively, we can find the transformation matrix of the end effector relative to the base frame.
+
+This final transformation matrix provides the position and orientation of the end effector in the coordinate system defined by the base frame. Using this information, we can determine the Cartesian coordinates (x, y, z) of the end effector and the orientation.
+
+In summary, the direct kinematics of a cylindrical robot involves calculating the position and orientation of the end effector based on the known joint angles using the Denavit-Hartenberg parameters and homogeneous transformation matrices. It allows us to understand where the end effector is located in space when specific joint angles are given.
+#########################
+The inverse kinematics of a cylindrical robot is the process of determining the joint angles required to position the end effector (tool or gripper) at a specific location and orientation. In simpler terms, it calculates the joint angles necessary to achieve a desired position and orientation of the end effector.
+
+To understand the inverse kinematics of a cylindrical robot, we need to consider its geometric constraints. Our robot consists of a base, a vertical column, and an arm that rotates around the column and moves up and down. The arm is connected to the column with one revolute (rotational) joints.
+
+Given a desired position and orientation of the end effector, we need to calculate the corresponding joint angles that will achieve that configuration. This involves solving a set of mathematical equations that represent the relationship between the joint angles and the end effector's position and orientation.
+
+The process of solving these equations varies depending on the specific robot configuration and kinematic model used. 
+
+To solve this inverse kinematics problem, we use the Jacobian inverse method. It's a kind of method that involve iteratively refining an initial guess of the joint angles until the desired end effector position and orientation are achieved. Iterative algorithms use numerical optimization techniques to minimize the error between the desired and actual end effector positions.
+
+Overall, the inverse kinematics problem of a cylindrical robot involves finding the joint angles that satisfy the desired end effector position and orientation. 
+##################################
+2. We know that the robot has three joints: A revolute and two prismatic joints. The limits are given
+as follows:
+ θ1 → [0, 2π]
+ ρ1 → [0, 40]
+ ρ2 → [0, 50]
+What do you think about the workspace for this robot? Provide the volume of the workspace for
+this robot. (Consider all dimensions are in mm)
+It should be like a pipe, the height is 40, the outer radius is 112, inner radius is 62. So the volume is 0.4828 m^3. 
+
+3. The function RPP.m expects an origin O for the robot and the values for the three joints. The
+origin must be passed as a row vector. Place the robot at the origin of your choice and pass input
+values as zero for all the joints. You can provide a snapshot of the generated plot at this posture.
+
+4. After generating the plot, try to fix the reference frames and local frames for the robot. Using
+these frames construct the Denavit-Hartenberg table.
+
+5. For the input positions of question-3, generate the DH transformation matrix and validate the
+solutions to the Direct Kinematic Problem (DKP) with the plot.
+
+6. After validation of step-5, construct the Jacobian matrix for this robot. What will be the overall
+size of this matrix?
+
+7. Consider that the robot is connected to a controller of frequency 3 Hz. Set a simulation time tf
+of 15 seconds. Perform a joint-space simulation of your choice on this robot (Pay attention to the
+joint limits). Use the polynomial degree-5 equations that we employed in TP-5 to 8 to achieve this
+simulation.
+
+8. Solve the inverse kinematic problem (IKP) for the robot
